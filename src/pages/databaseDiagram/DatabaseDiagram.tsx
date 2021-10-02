@@ -226,20 +226,44 @@ const DatabaseDiagram = () => {
                 alignItems={ "center" }
                 style={ { height: "100vh" } }
             >
-                <Button variant="outlined" className={ classes.modalButton } onClick={() => setOpenModal(true)}>
+                <Button variant="outlined" className={ classes.modalButton } onClick={ () => setOpenModal(true) }>
                     ТИП JSON`а
                 </Button>
-                <Grid item className={ classes.mt }>
-                    <TextareaAutosize value={ textarea } onChange={ e => setTextarea(e.target.value) } minRows={ 30 }
-                                      maxRows={ 30 } style={ { width: 700 } }/>
+
+                <Grid
+                    container
+                    className={ classes.mt }
+                    style={ { width: "100%" } }
+                    justifyContent={ "center" }
+                    alignItems={ "center" }
+                >
+                    <TextareaAutosize
+                        value={ textarea }
+                        onChange={ e => setTextarea(e.target.value) }
+                        minRows={ 30 }
+                        maxRows={ 30 } style={ { width: "80%" } }
+                    />
                 </Grid>
+
                 JSON валидный? { jsonIsValid ? "Да" : "Нет" }
+
                 <Grid item className={ classes.mt }>
-                    <Button onClick={ useCustomJson } variant={ "outlined" } disabled={ !jsonIsValid }>Использовать
-                        кастомный JSON</Button>
+                    <Button
+                        onClick={ useCustomJson }
+                        variant={ "outlined" }
+                        disabled={ !jsonIsValid }
+                    >
+                        Использовать кастомный JSON
+                    </Button>
                 </Grid>
+
                 <Grid item className={ classes.mt }>
-                    <Button onClick={ useTestJson } variant="outlined">Использовать тестовый JSON</Button>
+                    <Button
+                        onClick={ useTestJson }
+                        variant="outlined"
+                    >
+                        Использовать тестовый JSON
+                    </Button>
                 </Grid>
                 <JsonTypeDialog open={ openModal } onClose={ () => setOpenModal(false) }/>
             </Grid>
